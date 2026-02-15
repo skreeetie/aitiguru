@@ -6,7 +6,7 @@ import Lock from '../assets/lock.svg?react';
 import Eye from '../assets/eye.svg?react';
 import { useState } from 'react';
 import { useAuthUserMutation } from '../store/api/authApi';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 interface Inputs {
   login: string;
@@ -66,14 +66,14 @@ export const LoginPage = () => {
     }
   }
   return (
-    <section className="w-[527px] h-[716px] p-[6px] rounded-[40px] bg-white shadow-[0_24px_32px_0_rgba(0,0,0,0.04)] mx-auto mt-[92px]">
+    <main className="w-[527px] h-[716px] p-[6px] rounded-[40px] bg-white shadow-[0_24px_32px_0_rgba(0,0,0,0.04)] mx-auto mt-[92px]">
       <div className="w-[515px] h-[704px] p-[48px] rounded-[34px] bg-[linear-gradient(180deg,rgba(35,35,35,0.03)_0%,rgba(35,35,35,0)_50%)]">
         <div className='mx-auto rounded-[100px] w-[52px] h-[52px] shadow-[0_12px_8px_0_rgba(0,0,0,0.03),0_0_0_2px_#fff] bg-[linear-gradient(360deg,rgba(35,35,35,0)_50%,rgba(35,35,35,0.06)_100%)] flex items-center justify-center'>
           <Logo className='w-[35px] h-[34px]' />
         </div>
         <h2 className='mt-[32px] font-inter font-semibold text-[40px]/[110%] tracking-[-0.01em] text-center text-[#232323]'>Добро пожаловать!</h2>
         <p className='mt-[12px] font-inter font-medium text-[18px]/[150%] text-center text-[#bcbcbc]'>Пожалуйста, авторизуйтесь</p>
-        <form onSubmit={handleSubmit(onSubmit)} className='mx-auto mt-[32px] w-[399px] h-[350px]'>
+        <form onSubmit={handleSubmit(onSubmit)} className='mx-auto mt-[32px] w-[399px] min-h-[330px]'>
           <label className='flex flex-col gap-[6px] font-inter font-medium text-[18px]/[150%] tracking-[-0.01em] text-[#232323]'>
             Логин
             <div className='flex items-center justify-center gap-[4px] border-[2px] border-solid border-[#ededed] rounded-[12px] p-[14px_16px] w-[399px] h-[55px] bg-white'>
@@ -103,7 +103,9 @@ export const LoginPage = () => {
           <button className='mt-[20px] flex items-center justify-center w-full bg-[#242edb] border-[1px] border-solid border-[#367aff] rounded-[12px] p-[16px_8px] h-[54px] font-inter font-medium text-[18px]/[120%] tracking-[-0.01em] text-[#fff]'>Войти</button>
           {error && <p className='mt-[4px] text-[16px] text-[#d97272] flex items-center justify-center'>{error}</p>}
         </form>
+        <p className='flex items-center justify-center w-[399px] relative font-inter font-medium text-[16px]/[150%] text-[#bcbcbc] before:w-[175px] before:h-[1px] before:absolute before:bg-[#ebebeb] before:top-[12px] before:left-0 after:w-[175px] after:h-[1px] after:bg-[#ebebeb] after:absolute after:top-[12px] after:right-0'>или</p>
+        <p className='mt-[32px] flex items-center justify-center gap-[4px] font-inter font-normal text-[18px]/[150%] text-[#6c6c6c]'>Нет аккаунта? <Link to='' className='font-semibold underline text-[#242edb]'>Создать</Link></p>
       </div>
-    </section>
+    </main>
   )
 }
